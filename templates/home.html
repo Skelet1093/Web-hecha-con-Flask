@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="./static/css/home.css">
+</head>
+<body>
+    <div class="Formulario">
+        <h1>Inicio</h1>
+        <a class="crear" href="{{ url_for('crear') }}">+</a>
+        <a class="logout"  href="{{ url_for('logout') }}">
+            <img src="../static/img/paper-plane-regular.png" alt="logout">
+        </a>
+
+        <div class="Encabezado">
+            <label>Notas de {{ current_user.nombre }} {{ current_user.apellido }}</label>
+        </div>
+        
+        <div class="Notas">
+            <table>
+                {% for nota in notas %}
+                <div class="Nota">
+                    <a href="{{ url_for('editar', id=nota[0]) }}">
+                        <p><strong>Fecha:</strong> {{ nota[2] }}</p>
+                        <p>{{ nota[3] }}</p>
+                    </a>
+                </div>
+                {% endfor %}
+            </table>
+        </div>        
+    </div>
+
+</body>
+</html>

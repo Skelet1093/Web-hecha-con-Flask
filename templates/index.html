@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to NoteWorld</title>
+    <link rel="stylesheet" href="./static/css/main.css">
+</head>
+<body>
+    <div class="Formulario">
+        <h1>Login</h1>
+        <form action="/login" method="POST">
+            <div class="Usuario">
+                <label>Nombre de Usuario</label>
+                <input type="text" id="Usuario" name="Usuario" required>
+            </div>
+            <div class="Contraseña">
+                <label>Contraseña</label>
+                <input type="password" id="Contraseña" name="Contraseña" required>
+            </div>
+
+            <button class="btn-lg" type="submit">Iniciar</button>
+
+            <div class="Registrarse">
+                Puede registrarse haciendo click <a href="{{ url_for('regist') }}">aqui.</a>
+            </div>
+
+        </form>
+    </div>
+    
+    <script>
+        document.querySelector('form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Error HTTP: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    window.location.href = "/home";
+                } else {
+                    alert(data.message || "Ocurrió un error al iniciar sesión.");
+                }
+            } catch (error) {
+                console.error("Error al iniciar sesión:", error);
+                alert("No se pudo realizar el inicio de sesión. Por favor, inténtalo de nuevo.");
+            }
+        });
+    </script>
+
+</body>
+</html>

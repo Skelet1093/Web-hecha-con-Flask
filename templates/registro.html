@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regist to NoteWorld</title>
+    <link rel="stylesheet" href="./static/css/registro.css">
+</head>
+
+<body>
+    <div class="Formulario">
+        <h1>Registro</h1>
+        <form action="/registrar" method="POST">
+
+            <div class="Nombre">
+                <label>Nombre</label>
+                <input type="text" id="Name" name="Nombre" required>
+            </div>
+
+            <div class="Apellido">
+                <label>Apellido</label>
+                <input type="text" id="Lastname" name="Apellido" required>
+            </div>
+
+            <div class="Usuario">
+                <label>Nombre de Usuario</label>
+                <input type="text" id="Usuario" name="Usuario" required>
+            </div>
+
+            <div class="Contraseña">
+                <label>Contraseña</label>
+                <input type="password" id="Contraseña" name="Contraseña" required>
+            </div>
+
+            <div class="Contraseña2">
+                <label>Confirme su Contraseña</label>
+                <input type="password" id="Contraseña2" name="Contraseña2" required>
+            </div>
+
+            <button class="btn-lg" type="submit">Registrar</button>
+
+            <div class="Registrarse">
+                Si ya tiene una cuenta ve a <a href="{{ url_for('login') }}">Login.</a>
+            </div>
+
+        </form>
+
+    </div>
+    
+    <script>
+        document.querySelector('form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+
+            try {
+                const response = await fetch('/registrar', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Error HTTP: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    alert("¡Registro exitoso!");
+                    window.location.href = data.redirect; 
+                } else {
+                    alert(data.message || "Ocurrió un error al registrar.");
+                }
+            } catch (error) {
+                console.error("Error en el registro:", error);
+                alert("No se pudo realizar el registro. Por favor, inténtalo de nuevo.");
+            }
+        });
+    </script>
+</body>
+
+</html>

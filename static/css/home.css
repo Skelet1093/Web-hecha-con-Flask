@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: montserrat;
+    background: linear-gradient(80deg, #c100ff, #00ffc9);
+    height: 100vh;
+}
+
+.Formulario {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 90%;
+    height: 95vh;
+    border-radius: 10px;
+    border: white;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.Formulario h1 {
+    border-bottom: 3px solid gold;
+    text-shadow: -1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white, 1px -1px 0 white;
+}
+
+.crear {
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    text-shadow: -1px -1px 0 rgb(0, 0, 0), -1px 1px 0 rgb(0, 0, 0), 1px 1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.crear:hover {
+    background-color: #0056b3;
+}
+
+
+.logout {
+    position: absolute;
+    right: 80px;
+    height: 10px;
+    top: 10px;
+    padding: 1px 18px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 10px;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.logout:hover {
+    background-color: #0056b3;
+}
+
+.logout img {
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    transform: scale(2);
+    display: inline-block;
+}
+
+.Encabezado {
+    font-size: 20px;
+    color: rgb(139, 186, 212);
+}
+
+.Notas {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 15px;
+    justify-content: center;
+    padding: 10px;
+}
+
+.Notas .Nota {
+    width: 400px;
+    border: 1px solid #e5ff00; 
+    border-radius: 8px;  
+    background: #694343b0;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    padding: 5px; 
+    text-align: left;
+    font-size: 14px;
+}
+
+.Notas .Nota a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.Nota p {
+    font-size: 20px;
+    margin: 2px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    max-width: 99%;
+    max-height: 115px;
+}
